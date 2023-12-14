@@ -105,10 +105,11 @@ describe('#Person Suite', () => {
         Person,
         Person.validate.name
       )
-      // .mockReturnValue()
-      .mockImplementation(() => {
-        throw new Error('deu ruim!!')
+      .mockReturnValue({
+        name: "Bertoldo Klinger",
+        cpf: '123.456.789-00'
       })
+  
 
       jest.spyOn(
         Person, Person.format.name
@@ -117,10 +118,9 @@ describe('#Person Suite', () => {
           name: "Bertoldo",
           lastName: "Klinger"
         })
-
+        
         //act
         const result = Person.process(mockPerson)
-
         //assert
         const expected = 'ok'
         expect(result).toStrictEqual(expected)
